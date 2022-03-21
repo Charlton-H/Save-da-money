@@ -58,16 +58,8 @@
     <script src="./js/idb.js"></script>
   </body>
 
-  <script>
-    (function () {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('./service-worker.js')
-          .then(() => console.log('Service Worker registered successfully.'))
-          .catch((err) =>
-            console.log('Service Worker registration failed: ', err)
-          );
-      }
-    })();
-  </script>
+  (function () { if ('serviceWorker' in navigator) { navigator.serviceWorker
+  .register('./service-worker.js') .then(() => console.log('Service Worker
+  registered successfully.')) .catch((err) => console.log('Service Worker
+  registration failed: ', err) ); } })();
 </html>
