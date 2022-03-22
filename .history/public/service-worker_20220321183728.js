@@ -9,8 +9,6 @@ const FILES_TO_CACHE = [
 const APP_PREFIX = 'SaveMoney-';
 const VERSION = 'version_01';
 const CACHE_NAME = APP_PREFIX + VERSION;
-// save database info for mongo
-const DATA_CACHE_NAME = APP_PREFIX + 'CACHE-' + VERSION;
 
 // Cache resources
 self.addEventListener('install', function (e) {
