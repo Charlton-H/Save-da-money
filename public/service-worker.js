@@ -53,30 +53,31 @@ self.addEventListener('activate', function (e) {
 
 // listen for fetch event
 self.addEventListener('fetch', function (e) {
-  // if (e.request.url.includes('/api/')) {
-  //   e.respondWith(
-  //     caches
-  //       .open(DATA_CACHE_NAME)
-  //       .then((cache) => {
-  //         return fetch(e.request)
-  //           .then((response) => {
-  //             // Clone and store response in cache
-  //             if (response.status === 200) {
-  //               cache.put(e.request.url, response.clone());
-  //             }
+  // lines 56-80, review week 19, activity 4
+  if (e.request.url.includes('/api/')) {
+    e.respondWith(
+      caches
+        .open(DATA_CACHE_NAME)
+        .then((cache) => {
+          return fetch(e.request)
+            .then((response) => {
+              // Clone and store response in cache
+              if (response.status === 200) {
+                cache.put(e.request.url, response.clone());
+              }
 
-  //             return response;
-  //           })
-  //           .catch((err) => {
-  //             // Get response from cache
-  //             return cache.match(e.request);
-  //           });
-  //       })
-  //       .catch((err) => console.log(err))
-  //   );
+              return response;
+            })
+            .catch((err) => {
+              // Get response from cache
+              return cache.match(e.request);
+            });
+        })
+        .catch((err) => console.log(err))
+    );
 
-  //   return;
-  // }
+    return;
+  }
   console.log('fetch request : ' + e.request.url);
   // respond to the request
   e.respondWith(
